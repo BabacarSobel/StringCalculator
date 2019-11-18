@@ -46,5 +46,13 @@ namespace StringCalculator.Tests
         {
             return Calculator.Add(values);
         }
+
+        [Test]
+        [TestCase("1,2,3,4,5", ExpectedResult = 15)]
+        [TestCase("1,10,10,10,10,10,10,10,10", ExpectedResult = 81)]
+        public int UnlimitedNumbersCommaSeparatedSouldReturnSum(string values)
+        {
+            return Calculator.Add(values);
+        }
     }
 }
