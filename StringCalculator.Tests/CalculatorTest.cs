@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 
 namespace StringCalculator.Tests
 {
@@ -53,6 +54,30 @@ namespace StringCalculator.Tests
         public int UnlimitedNumbersCommaSeparatedSouldReturnSum(string values)
         {
             return Calculator.Add(values);
+        }
+
+        [Test]
+        [TestCase("1\n2,3", ExpectedResult =6)]
+        [TestCase("1\n2\n3", ExpectedResult = 6)]
+        public int NewLineCanBeUsedAsCommaForOperation(string values)
+        {
+            return Calculator.Add(values);
+        }
+
+        [Test]
+        [TestCase("1,\n")]
+        [TestCase("1,              \n")]
+        public void EmptyAfterNewLineShouldFail(string values)
+        {
+            try
+            {
+                Calculator.Add(values);
+            }catch(Exception e)
+            {
+                Assert.Pass();
+            }
+
+            Assert.Fail();
         }
     }
 }

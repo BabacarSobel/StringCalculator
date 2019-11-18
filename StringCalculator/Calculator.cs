@@ -9,7 +9,12 @@ namespace StringCalculator
         {
             if (string.IsNullOrEmpty(numbers) || string.IsNullOrWhiteSpace(numbers))
                 return 0;
+            numbers = numbers.Replace(" ", "");
+            numbers = numbers.Replace("\n", ",");
+            if (numbers.Contains(",,"))
+                throw new Exception("invalid input");
 
+            
             var valuesAsString = numbers.Split(',');
             var valuesAsInteger = valuesAsString.Select(v =>
             {
