@@ -87,5 +87,23 @@ namespace StringCalculator.Tests
         {
             return Calculator.Add(values);
         }
+
+        [Test]
+        [TestCase("-1")]
+        [TestCase("-5,-3,-4")]
+        [TestCase("//ajouter\n1ajouter2ajouter3\n -4")]
+        public void IfOneNegativeValueOperationShouldFail(string values)
+        {
+            try
+            {
+                Calculator.Add(values);
+            }
+            catch (Exception e)
+            {
+                Assert.Pass();
+            }
+
+            Assert.Fail();
+        }
     }
 }
