@@ -79,5 +79,13 @@ namespace StringCalculator.Tests
 
             Assert.Fail();
         }
+
+        [Test]
+        [TestCase("//;\n1;2",ExpectedResult = 3)]
+        [TestCase("//ajouter\n1ajouter2ajouter3\n 4", ExpectedResult = 10)]
+        public int NewDelimiterCanBeDefinedInFirstLine(string values)
+        {
+            return Calculator.Add(values);
+        }
     }
 }
